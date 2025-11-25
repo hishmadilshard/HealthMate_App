@@ -1,0 +1,9 @@
+analyzer:
+  errors:
+    depend_on_referenced_packages: ignore
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    avoid_print: false
+    prefer_const_constructors: false
