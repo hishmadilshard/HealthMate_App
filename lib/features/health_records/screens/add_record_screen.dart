@@ -34,7 +34,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // 📅 Date Field
+              //  Date Field
               TextFormField(
                 initialValue: _date,
                 decoration: InputDecoration(
@@ -48,7 +48,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
               ),
               const SizedBox(height: 20),
 
-              // 🟢 Steps Field
+              //  Steps Field
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Steps',
@@ -63,7 +63,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
               ),
               const SizedBox(height: 20),
 
-              // 🟠 Calories Field
+              //  Calories Field
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Calories',
@@ -78,7 +78,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
               ),
               const SizedBox(height: 20),
 
-              // 💧 Water Field
+              //  Water Field
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Water (ml)',
@@ -93,7 +93,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
               ),
               const SizedBox(height: 30),
 
-              // 💾 Save Button
+              //  Save Button
               ElevatedButton.icon(
                 icon: const Icon(Icons.save, color: Colors.white),
                 label: const Text(

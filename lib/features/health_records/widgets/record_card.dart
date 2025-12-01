@@ -42,7 +42,7 @@ class RecordCard extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          // Icons/values — use Wrap so they will wrap on narrow screens
+         
           Wrap(
             spacing: 12,
             runSpacing: 10,
@@ -56,7 +56,7 @@ class RecordCard extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          // Buttons row aligned to the right
+          
           Row(
             children: [
               const Spacer(),

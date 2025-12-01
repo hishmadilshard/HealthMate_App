@@ -11,7 +11,7 @@ class DatabaseHelper {
   Database? _db;
 
   // ============================================================
-  // ⭐ INIT DATABASE WITH TRY–CATCH
+  // INIT DATABASE WITH TRY–CATCH
   // ============================================================
   Future<void> init() async {
     try {
@@ -29,19 +29,19 @@ class DatabaseHelper {
           try {
             await _insertDummyIfEmpty(db);
           } catch (e) {
-            print("❌ Error inserting dummy data: $e");
+            print(" Error inserting dummy data: $e");
           }
         },
       );
 
-      print("✅ Database initialized successfully");
+      print(" Database initialized successfully");
     } catch (e) {
-      print("❌ Database init error: $e");
+      print(" Database init error: $e");
     }
   }
 
   // ============================================================
-  // ⭐ CREATE TABLE
+  //  CREATE TABLE
   // ============================================================
   Future<void> _onCreate(Database db, int version) async {
     try {
@@ -54,9 +54,9 @@ class DatabaseHelper {
           water INTEGER NOT NULL
         )
       ''');
-      print("✅ Table created successfully");
+      print(" Table created successfully");
     } catch (e) {
-      print("❌ Error creating table: $e");
+      print(" Error creating table: $e");
     }
   }
 
@@ -65,14 +65,14 @@ class DatabaseHelper {
     try {
       await db.execute("DROP TABLE IF EXISTS health_records");
       await _onCreate(db, newVersion);
-      print("🔄 Database upgraded successfully");
+      print(" Database upgraded successfully");
     } catch (e) {
-      print("❌ Error during upgrade: $e");
+      print(" Error during upgrade: $e");
     }
   }
 
   // ============================================================
-  // ⭐ DUMMY DATA INSERTION
+  //  DUMMY DATA INSERTION
   // ============================================================
   Future<void> _insertDummyIfEmpty(Database db) async {
     try {
@@ -95,29 +95,29 @@ class DatabaseHelper {
         await db.insert("health_records", record);
       }
 
-      print("📌 Dummy data inserted");
+      print(" Dummy data inserted");
     } catch (e) {
-      print("❌ Error inserting dummy data: $e");
+      print(" Error inserting dummy data: $e");
     }
   }
 
   Database get database => _db!;
 
   // ============================================================
-  // ⭐ GET ALL RECORDS
+  //  GET ALL RECORDS
   // ============================================================
   Future<List<HealthRecord>> getRecords() async {
     try {
       final res = await database.query('health_records', orderBy: 'date DESC');
       return res.map((e) => HealthRecord.fromMap(e)).toList();
     } catch (e) {
-      print("❌ Error fetching records: $e");
+      print(" Error fetching records: $e");
       return [];
     }
   }
 
   // ============================================================
-  // ⭐ INSERT RECORD
+  //  INSERT RECORD
   // ============================================================
   Future<void> insertRecord(HealthRecord record) async {
     try {
@@ -126,14 +126,14 @@ class DatabaseHelper {
         record.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
-      print("✅ Record inserted successfully");
+      print(" Record inserted successfully");
     } catch (e) {
-      print("❌ Error inserting record: $e");
+      print(" Error inserting record: $e");
     }
   }
 
   // ============================================================
-  // ⭐ UPDATE RECORD
+  //  UPDATE RECORD
   // ============================================================
   Future<void> updateRecord(HealthRecord record) async {
     try {
@@ -143,14 +143,14 @@ class DatabaseHelper {
         where: 'id = ?',
         whereArgs: [record.id],
       );
-      print("🔄 Record updated successfully");
+      print(" Record updated successfully");
     } catch (e) {
-      print("❌ Error updating record: $e");
+      print(" Error updating record: $e");
     }
   }
 
   // ============================================================
-  // ⭐ DELETE RECORD
+  //  DELETE RECORD
   // ============================================================
   Future<void> deleteRecord(int id) async {
     try {
@@ -159,14 +159,14 @@ class DatabaseHelper {
         where: 'id = ?',
         whereArgs: [id],
       );
-      print("🗑️ Record deleted");
+      print(" Record deleted");
     } catch (e) {
-      print("❌ Error deleting record: $e");
+      print(" Error deleting record: $e");
     }
   }
 
   // ============================================================
-  // ⭐ GET RECORD BY DATE
+  //  GET RECORD BY DATE
   // ============================================================
   Future<List<HealthRecord>> getRecordsByDate(String date) async {
     try {
@@ -177,7 +177,7 @@ class DatabaseHelper {
       );
       return res.map((e) => HealthRecord.fromMap(e)).toList();
     } catch (e) {
-      print("❌ Error fetching records by date: $e");
+      print(" Error fetching records by date: $e");
       return [];
     }
   }

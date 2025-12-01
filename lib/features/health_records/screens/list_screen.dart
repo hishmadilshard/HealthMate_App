@@ -20,7 +20,7 @@ class _ListScreenState extends State<ListScreen> {
   void initState() {
     super.initState();
 
-    // Load only once (DO NOT reload in build)
+   
     final provider = Provider.of<HealthProvider>(context, listen: false);
     provider.loadRecords();
   }
@@ -37,7 +37,7 @@ class _ListScreenState extends State<ListScreen> {
 
       body: Column(
         children: [
-          // 🔍 Search Bar 
+          //  Search Bar 
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
@@ -56,7 +56,7 @@ class _ListScreenState extends State<ListScreen> {
             ),
           ),
 
-          // 📋 Records List
+          //  Records List
           Expanded(
             child: StreamBuilder<List>(
               stream: provider.recordsStream,
@@ -87,7 +87,7 @@ class _ListScreenState extends State<ListScreen> {
         ],
       ),
 
-      // Bottom Navigation Bar – FIXED
+      // Bottom Navigation Bar 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
@@ -107,9 +107,6 @@ class _ListScreenState extends State<ListScreen> {
               MaterialPageRoute(builder: (_) => const DashboardScreen()),
             );
           } 
-          // ⭐ IMPORTANT:
-          // Do NOT reload ListScreen again when index == 2
-          // Because we are already here.
         },
 
         items: const [

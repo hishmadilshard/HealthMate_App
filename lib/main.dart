@@ -21,7 +21,7 @@ void main() async {
   runApp(MyApp(startSetup: setupDone));
 }
 
-/// 🚀 MyApp MUST be StatelessWidget (NOT StatefulWidget!)
+///  MyApp MUST be StatelessWidget
 class MyApp extends StatelessWidget {
   final bool startSetup;
 

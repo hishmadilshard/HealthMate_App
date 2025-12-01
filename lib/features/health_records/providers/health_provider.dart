@@ -6,11 +6,11 @@ import '../models/health_record.dart';
 class HealthProvider with ChangeNotifier {
   final DatabaseHelper _dbHelper = DatabaseHelper();
 
-  // 🔹 Local cache of records
+  //  Local cache of records
   List<HealthRecord> _records = [];
   List<HealthRecord> get records => _records;
 
-  // 🔹 Stream controller for real-time UI updates
+  //  Stream controller for real-time UI updates
   final StreamController<List<HealthRecord>> _recordsStreamController =
       StreamController<List<HealthRecord>>.broadcast();
 
@@ -19,7 +19,7 @@ class HealthProvider with ChangeNotifier {
 
   Timer? _autoRefreshTimer;
 
-  // ✅ Load all records from database
+  //  Load all records from database
   Future<void> loadRecords() async {
     await _dbHelper.init();
     _records = await _dbHelper.getRecords();
@@ -27,7 +27,7 @@ class HealthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // 🔄 Auto-refresh every few seconds
+  // Auto-refresh every few seconds
   void startAutoRefresh() {
     _autoRefreshTimer ??= Timer.periodic(
       const Duration(seconds: 3),
@@ -46,7 +46,7 @@ class HealthProvider with ChangeNotifier {
     }
   }
 
-  // 🔍 Check equal lists
+  //  Check equal lists
   bool _areRecordsEqual(List<HealthRecord> a, List<HealthRecord> b) {
     if (a.length != b.length) return false;
     for (int i = 0; i < a.length; i++) {
@@ -61,25 +61,25 @@ class HealthProvider with ChangeNotifier {
     return true;
   }
 
-  // ➕ Add record
+  //  Add record
   Future<void> addRecord(HealthRecord record) async {
     await _dbHelper.insertRecord(record);
     await _refreshRecords();
   }
 
-  // 🔄 Update record
+  //  Update record
   Future<void> updateRecord(HealthRecord record) async {
     await _dbHelper.updateRecord(record);
     await _refreshRecords();
   }
 
-  // ❌ Delete record
+  //  Delete record
   Future<void> deleteRecord(int id) async {
     await _dbHelper.deleteRecord(id);
     await _refreshRecords();
   }
 
-  // 🔍 FIXED SEARCH FUNCTION — WORKS 100%
+  //  SEARCH FUNCTION 
   void filterByDate(String query) {
     query = query.trim();
 
@@ -98,7 +98,7 @@ class HealthProvider with ChangeNotifier {
     _recordsStreamController.add(filtered);
   }
 
-  // 📅 Today's totals
+  //  Today's totals
   int getTodayTotal(String field) {
     DateTime today = DateTime.now();
     String todayStr =
@@ -117,7 +117,7 @@ class HealthProvider with ChangeNotifier {
     return 0;
   }
 
-  // 📅 Monthly totals
+  //  Monthly totals
   int getMonthTotal(String field) {
     DateTime now = DateTime.now();
     String month = '${now.year}-${now.month.toString().padLeft(2, '0')}';
@@ -135,7 +135,7 @@ class HealthProvider with ChangeNotifier {
     return 0;
   }
 
-  // ⭐ Daily streak
+  //  Daily streak
   int getDailyStreak() {
     if (_records.isEmpty) return 0;
 
@@ -163,7 +163,7 @@ class HealthProvider with ChangeNotifier {
     return streak;
   }
 
-// ⭐ UPDATED ACHIEVEMENTS (Based on 10,000 steps per day)
+//  UPDATED ACHIEVEMENTS (Based on 10,000 steps per day)
 List<String> getAchievements() {
   List<String> badges = [];
 
@@ -174,17 +174,17 @@ List<String> getAchievements() {
   // Streak
   int streak = getDailyStreak();
 
-  // 🥇 Steps Achievement (10,000 per day)
+  //  Steps Achievement (10,000 per day)
   if (todaySteps >= 10000) {
     badges.add("10,000 Steps Today");
   }
 
-  // 💧 Water Achievement (2000 ml per day)
+  //  Water Achievement (2000 ml per day)
   if (todayWater >= 2000) {
     badges.add("2000ml Water Goal Reached");
   }
 
-  // 🔥 Consistency (Streak Achievements)
+  //  Consistency (Streak Achievements)
   if (streak >= 3) {
     badges.add("3-Day Streak");
   }

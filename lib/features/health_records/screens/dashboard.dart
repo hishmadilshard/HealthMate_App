@@ -1,8 +1,3 @@
-// DashboardScreen_fixed.dart
-// Fixed Dashboard screen with Achievements & Streak integration
-
-// ignore_for_file: unused_element, deprecated_member_use, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -89,12 +84,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Profile header (optional)
                 
 
                 const SizedBox(height: 10),
 
-                // Gradient Header (fixed)
+                // Gradient Header
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(22),
@@ -229,7 +223,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         type: BottomNavigationBarType.fixed,
         elevation: 15,
         onTap: (index) {
-          if (index == _selectedIndex) return; // prevent pushing same page
+          if (index == _selectedIndex) return; 
           setState(() => _selectedIndex = index);
 
           if (index == 0) {
@@ -251,45 +245,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // PROFILE HEADER
-  Widget _profileHeader(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(18),
-      margin: const EdgeInsets.only(bottom: 14),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF6A89CC), Color(0xFF8E44AD)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12.withOpacity(0.15),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          )
-        ],
-      ),
-      child: Row(
-        children: [
-          // Avatar
-          Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2),
-              image: const DecorationImage(
-                image: AssetImage("assets/user_avatar.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-
-          const SizedBox(width: 16),
-
           // Edit button
           InkWell(
             onTap: () {
@@ -301,9 +256,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Icon(Icons.edit, color: Colors.white),
             ),
           )
-        ],
-      ),
-    );
   }
 
   // ACHIEVEMENT BADGES UI
@@ -467,5 +419,5 @@ class _DashboardScreenState extends State<DashboardScreen> {
         titleStyle: const TextStyle(color: Colors.white),
       ),
     ];
-  }
 }
+

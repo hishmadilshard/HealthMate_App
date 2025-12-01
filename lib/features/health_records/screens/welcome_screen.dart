@@ -57,7 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     super.dispose();
   }
 
-  // 🔥 Logout confirm + clear data
+  //  Logout confirm + clear data
   void _confirmLogout(BuildContext context) {
     showDialog(
       context: context,
@@ -109,7 +109,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
       body: Stack(
         children: [
-          // 🌈 Gradient Background
+          //  Gradient Background
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -137,7 +137,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     children: [
                       const SizedBox(height: 20),
 
-                      // ⭐ Premium Glass Card
+                      //  Premium Glass Card
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(28),
@@ -178,7 +178,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             ),
                             const SizedBox(height: 25),
 
-                            // ❤️ Heart Icon
+                            //  Heart Icon
                             Container(
                               padding: const EdgeInsets.all(20),
                               decoration: BoxDecoration(
@@ -197,7 +197,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
                       const Spacer(),
 
-                      // ⭐ Bottom Navigation Buttons
+                      //  Bottom Navigation Buttons
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -233,7 +233,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  // ⭐ Bottom Button Styled Widget
+  //  Bottom Button Styled Widget
   Widget _bottomButton({
     required IconData icon,
     required String label,
