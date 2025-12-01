@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_colon_for_default_value, deprecated_member_use, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -245,19 +247,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-          // Edit button
-          InkWell(
-            onTap: () {
-              // Handle profile edit
-            },
-            borderRadius: BorderRadius.circular(50),
-            child: const CircleAvatar(
-              backgroundColor: Colors.white24,
-              child: Icon(Icons.edit, color: Colors.white),
-            ),
-          )
-  }
-
   // ACHIEVEMENT BADGES UI
   Widget _achievementBadges(List<String> badges) {
     return Container(
@@ -419,5 +408,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         titleStyle: const TextStyle(color: Colors.white),
       ),
     ];
+}
 }
 
