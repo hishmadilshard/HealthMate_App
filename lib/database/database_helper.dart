@@ -11,7 +11,7 @@ class DatabaseHelper {
   Database? _db;
 
   // ============================================================
-  // INIT DATABASE WITH TRY–CATCH
+  // INIT DATABASE 
   // ============================================================
   Future<void> init() async {
     try {
